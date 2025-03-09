@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronde 2 - Muziekronde</title>
+    <link rel="stylesheet" href="stijl.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Ronde 2: Muziekronde</h1>
+        <p>Luister naar het fragment en raad het nummer!</p>
+        
+        <div class="vraag">
+            <audio controls>
+                <source src="media/audio/nummer1.mp3" type="audio/mp3">
+                Je browser ondersteunt geen audio-element.
+            </audio>
+            <button onclick="toonAntwoord(this)">Toon antwoord</button>
+            <p class="antwoord">Bohemian Rhapsody - Queen</p>
+        </div>
+
+        <a href="ronde3.html" class="btn">Volgende ronde</a>
+    </div>
+</body>
+</html>
