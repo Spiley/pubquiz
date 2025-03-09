@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pub Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Pub Quiz - Algemene kennis</h1>
+    
+    <div id="questionContainer">
+        <div id="questionBanner">
+          <h2 id="questionText"></h2>
+        </div>
+        <div id="answerOptions"></div>
+        <button id="showCorrectAnswer" onclick="showCorrectAnswer()">Antwoord</button>
+        <button id="nextButton" onclick="nextQuestion()">Next Question</button>
+      </div>
+      
+      
+
+
+    <div id="pointsTable">
+      <h2>Teams Punten</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Team Naam</th>
+            <th>Punten</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="teamPointsList"></tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- Questions -->
+  <div id="questionsData" style="display: none;">
+    <div class="question" data-question="What is the capital of the Netherlands?" data-answers="Amsterdam, Berlin, Brussels, Paris" style="display: none;" data-correct="Amsterdam"></div>
+    <div class="question" data-question="Who wrote 'Hamlet'?" data-answers="Shakespeare, Dickens, Hemingway, Austen" data-correct="Shakespeare"></div>
+    <div class="question" data-question="What is 5 + 3?" data-answers="7, 8, 9, 10" data-correct="8"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
