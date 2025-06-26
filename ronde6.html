@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Family Feud Simpel</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+  }
+  #questionText {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  table.answers {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  table.answers td {
+    border: 1px solid #333;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #ccc;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  table.answers td.revealed {
+    background-color: #2a9d8f;
+    color: white;
+    cursor: default;
+  }
+  table.answers td.points {
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: #264653;
+  }
+  table.answers tr:hover td:not(.revealed):not(.points) {
+    background-color: #b0b0b0;
+    color: #666;
+  }
+</style>
+  <script defer src="script.js"></script>
+  <script defer src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<h1>Family Feud</h1>
+<h2>Ronde 6: Wat neem je mee op vakantie?</h2>
+<div id="questionText"></div>
+
+<table class="answers" id="answersTable">
+  <!-- Antwoorden verschijnen hier -->
+</table>
+
+<script>
+  // Data
+  const question = "";
+  const answers = [
+    { text: "Kleding", points: 45, revealed: false },
+    { text: "Toiletartikelen", points: 20, revealed: false },
+    { text: "Paspoort", points: 15, revealed: false },
+    { text: "Zonnebril", points: 10, revealed: false },
+    { text: "Camera", points: 5, revealed: false },
+  ];
+
+  // DOM elementen
+  const questionTextEl = document.getElementById('questionText');
+  const answersTable = document.getElementById('answersTable');
+
+  // Vraag tonen
+  function displayQuestion() {
+    questionTextEl.textContent = question;
+  }
+
+  // Antwoorden tonen (verborgen of onthuld)
+  function displayAnswers() {
+    answersTable.innerHTML = '';
+    answers.forEach((ans, i) => {
+      const tr = document.createElement('tr');
+      const tdAnswer = document.createElement('td');
+      tdAnswer.textContent = ans.revealed ? ans.text : '???';
+      tdAnswer.className = ans.revealed ? 'revealed' : '';
+      tdAnswer.style.cursor = ans.revealed ? 'default' : 'pointer';
+      tdAnswer.onclick = () => revealAnswer(i);
+
+      const tdPoints = document.createElement('td');
+      tdPoints.textContent = ans.revealed ? ans.points : '';
+      tdPoints.className = 'points';
+
+      tr.appendChild(tdAnswer);
+      tr.appendChild(tdPoints);
+      answersTable.appendChild(tr);
+    });
+  }
+
+  // Antwoord onthullen
+  function revealAnswer(index) {
+    if (answers[index].revealed) return; // al onthuld
+    answers[index].revealed = true;
+    displayAnswers();
+  }
+
+  // Init
+  displayQuestion();
+  displayAnswers();
+</script>
+
+ <div id="pointsTable">
+      <h2>Teams Punten</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Punten</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="teamPointsList"></tbody>
+      </table>
+    </div>
+  
+  <script src="puntentabel.js"></script>
+
+</body>
+</html>

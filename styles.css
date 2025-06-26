@@ -1,9 +1,4 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
+
 
 .container {
   width: 80%;
@@ -25,6 +20,15 @@ button {
   border-radius: 5px;
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
 }
 
 button:hover {

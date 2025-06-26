@@ -7,11 +7,27 @@
   <link rel="stylesheet" href="styles.css">
   <!-- <link rel="stylesheet" href="style.css"> -->
   <script defer src="script.js"></script>
-  <!-- <script defer src="app.js"></script> -->
+  <script defer src="app.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Pub Quiz - Algemene kennis</h1>
+    
+    <div class="container" id="questionContainer">
+        <h1>Ronde 2: Muziekronde</h1>
+        <p>Luister naar het fragment en raad het nummer!</p>
+        
+        <div class="vraag">
+            <audio controls>
+                <source src="media/audio/nummer1.mp3" type="audio/mp3">
+                Je browser ondersteunt geen audio-element.
+            </audio> <br><br>
+            <button onclick="toonAntwoord(this)">Toon antwoord</button>
+            <p class="antwoord">Bohemian Rhapsody - Queen</p>
+        </div>
+
+        <a href="ronde3.html" class="btn">Volgende ronde</a>
+    </div>
       
 
 
@@ -30,22 +46,9 @@
     </div>
   
   <script src="puntentabel.js"></script>
+  </div>
 
 </body>
 </html>
 
-    <!-- <div class="container">
-        <h1>Ronde 2: Muziekronde</h1>
-        <p>Luister naar het fragment en raad het nummer!</p>
-        
-        <div class="vraag">
-            <audio controls>
-                <source src="media/audio/nummer1.mp3" type="audio/mp3">
-                Je browser ondersteunt geen audio-element.
-            </audio>
-            <button onclick="toonAntwoord(this)">Toon antwoord</button>
-            <p class="antwoord">Bohemian Rhapsody - Queen</p>
-        </div>
-
-        <a href="ronde3.html" class="btn">Volgende ronde</a>
-    </div> -->
+    
