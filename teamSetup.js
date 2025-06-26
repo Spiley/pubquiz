@@ -32,7 +32,7 @@ function resetTeams() {
 
 // Navigate to the quiz page
 function goToQuiz() {
-  window.location.href = "quiz.html"; // Go to quiz page
+  window.location.href = "ronde1uitleg.html"; // Go to quiz page
 }
 
 displayTeams();

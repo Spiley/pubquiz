@@ -1,4 +1,11 @@
 let teams = JSON.parse(localStorage.getItem('teams')) || [];
+if (teams.length === 0) {
+  teams = [
+    { name: 'Team A', points: 0 },
+    { name: 'Team B', points: 0 }
+  ];
+  localStorage.setItem('teams', JSON.stringify(teams));
+}
 let currentQuestionIndex = 0;
 
 // Fetch questions from the HTML file
@@ -116,7 +123,7 @@ function addPointsToSpecificTeam(teamIndex) {
 
 // Function to finish the quiz and show the results
 function finishQuiz() {
-    window.location.href = 'ronde2.html';
+    window.location.href = 'ronde2uitleg.html';
 }
 
 // Function to subtract 1 point from a specific team by clicking their button
