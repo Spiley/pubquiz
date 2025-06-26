@@ -21,7 +21,7 @@ function displayQuestion() {
   const answerOptions = document.getElementById('answerOptions');
   answerOptions.innerHTML = ''; // Clear previous answers
   question.answers.forEach(answer => {
-    const answerElement = document.createElement('p'); // Use <p> or <span> instead of <button>
+    const answerElement = document.createElement('p'); 
     answerElement.textContent = answer;
     answerElement.onclick = () => checkAnswer(answer);
     answerOptions.appendChild(answerElement);
@@ -37,9 +37,6 @@ function displayQuestion() {
     answerOptions.appendChild(newButton); // Add below the answer options
   }
 
-  // Hide the "Next Question" button initially
-//   const nextButton = document.getElementById('nextButton');
-//   nextButton.style.display = 'none';
 }
 
 // Function to check if the selected answer is correct
