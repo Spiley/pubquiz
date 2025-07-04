@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  body {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pub Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <style>
+    body {
       background-image: url("images/verknipt.png");
       background-repeat: no-repeat;
       background-size: cover;
@@ -9,44 +15,103 @@
       padding: 0;
       height: 100vh;
       display: flex;
-      justify-content: center;  
-      align-items: center;     
+      justify-content: center;
+      align-items: center;
       background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-  }
-  .container {
-    width: 100%;
-    max-width: 800px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-</style>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pub Quiz</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .question-box {
+      background-color: #f9f9f9;
+      border-left: 6px solid #000000;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .answer-box {
+      display: none;
+      margin-top: 10px;
+      font-size: 1.3rem;
+      color: #28a745;
+      font-weight: bold;
+      background-color: #e8fbe9;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .button-group {
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      background-color: #000000;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group button:hover {
+      background-color: #363636;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 40px;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #000000;
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    
-    
-    <div id="questionContainer">
-      <h1>Pub Quiz - Algemene kennis</h1>
-        <div id="questionBanner">
-          <h2 id="questionText"></h2>
-        </div>
-        <div id="answerOptions"></div>
-        <button id="showCorrectAnswer" onclick="showCorrectAnswer()">Antwoord</button>
-        <button id="nextButton" onclick="nextQuestion()">Next Question</button>
+
+    <!-- Open vragen -->
+    <div id="openQuestions">
+      <h2>Open Vraag</h2>
+      <div class="question-box" id="questionCell">
+        Hoe heet de Belgische influencer die onlangs als eerste 49 miljoen YouTube‑subscribers bereikte, vooral bekend van voetbal‑, dans‑ en prankvideo’s?
       </div>
-      
-      
+      <div class="answer-box" id="answerCell">
+        Celine Dept
+      </div>
+      <div class="button-group">
+        <button onclick="showAnswer()">Toon Antwoord</button>
+        <button id="nextButton" onclick="nextQuestion()">Volgende Vraag</button>
+      </div>
+    </div>
 
-
+    <!-- Punten Tabel -->
     <div id="pointsTable">
       <h2>Teams Punten</h2>
       <table>
@@ -54,7 +119,6 @@
           <tr>
             <th>Team Naam</th>
             <th>Punten</th>
-            <th></th>
           </tr>
         </thead>
         <tbody id="teamPointsList"></tbody>
@@ -62,14 +126,47 @@
     </div>
   </div>
 
+  <script src="puntentabel.js"></script>
+  <script>
+    const openQuestions = [
+      { vraag: "Hoe heet de Belgische influencer die onlangs als eerste 49 miljoen YouTube‑subscribers bereikte, vooral bekend van voetbal‑, dans‑ en prankvideo’s?", 
+        antwoord: "Celine Dept" },
+      { vraag: "Welke Nederlandse beauty‑vlogger begon op YouTube en heeft via haar transitieverhaal wereldwijd impact gemaakt?", antwoord: "NikkieTutorials" },
+      { vraag: "Wie is de huidige Navo baas?", antwoord: "Mark Rutte" },
+      { vraag: "Welke kleur pillen krijgt Neo in The Matrix aangeboden?", antwoord: "rood en blauw" },
+      { vraag: "Welk woord herhaalt Billie Eilish meer dan 20 keer in het refrein van 'Bad Guy'?", antwoord: "duh" },
+      { vraag: "Welke emoji gebruiken Gen Z’ers sarcastisch in plaats van de “😂” emoji?", antwoord: "💀 (schedel emoji)" },
+      { vraag: "Wat krijg je als je pindakaas frituurt?", antwoord: "gefrituurde pindakaas" }
+    ];
 
-  <!-- Questions -->
-  <div id="questionsData" style="display: none;">
-    <div class="question" data-question="What is the capital of the Netherlands?" data-answers="Amsterdam, Berlin, Brussels, Paris" style="display: none;" data-correct="Amsterdam"></div>
-    <div class="question" data-question="Who wrote 'Hamlet'?" data-answers="Shakespeare, Dickens, Hemingway, Austen" data-correct="Shakespeare"></div>
-    <div class="question" data-question="What is 5 + 3?" data-answers="7, 8, 9, 10" data-correct="8"></div>
-  </div>
+    let currentIndex = 0;
+    const answerCell = document.getElementById("answerCell");
+    const questionCell = document.getElementById("questionCell");
+    const nextButton = document.getElementById("nextButton");
 
-  <script src="app.js"></script>
+    function showAnswer() {
+      answerCell.textContent = openQuestions[currentIndex].antwoord;
+      answerCell.style.display = "block";
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+
+      if (currentIndex < openQuestions.length) {
+        questionCell.textContent = openQuestions[currentIndex].vraag;
+        answerCell.style.display = "none";
+
+        // Als het de laatste vraag is, verander knoptekst
+        if (currentIndex === openQuestions.length - 1) {
+          nextButton.textContent = "Ga door";
+        }
+      } else {
+        // Ga naar een andere pagina (pas dit pad aan indien nodig)
+        window.location.href = "ronde2uitleg.html";
+      }
+    }
+  </script>
 </body>
+</html>
+
 </html>
