@@ -8,6 +8,9 @@
     body {
       font-family: Arial, sans-serif;
       background: #f0f4f8;
+      background-image: url("images/zelf-bier-brouwen.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
       margin: 0;
       padding: 0;
       display: flex;
@@ -75,13 +78,13 @@
   <div class="container">
     <h1>Team Setup</h1>
     <input type="text" id="teamName" placeholder="Enter team name" />
-    <button onclick="addTeam()">Add Team</button>
+    <button onclick="addTeam()">Team Toevoegen</button>
 
     <h2>Teams:</h2>
     <ul id="teamList"></ul>
 
     <button onclick="resetTeams()">Reset Teams</button>
-    <button onclick="goToQuiz()">Go to Quiz</button>
+    <button onclick="goToQuiz()">Naar Quiz</button>
   </div>
 
   <script src="teamSetup.js"></script>

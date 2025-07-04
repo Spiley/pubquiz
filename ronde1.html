@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  body {
+      background-image: url("images/verknipt.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;  
+      align-items: center;     
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+  }
+  .container {
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pub Quiz</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- <link rel="stylesheet" href="style.css"> -->
   <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Pub Quiz - Algemene kennis</h1>
+    
     
     <div id="questionContainer">
+      <h1>Pub Quiz - Algemene kennis</h1>
         <div id="questionBanner">
           <h2 id="questionText"></h2>
         </div>
