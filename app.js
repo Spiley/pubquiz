@@ -128,7 +128,7 @@ function finishQuiz() {
 
 // Function to subtract 1 point from a specific team by clicking their button
 function subtractPointsFromSpecificTeam(teamIndex) {
-    if (teams[teamIndex].points > 0) {  // Ensure points don't go below 0
+    if (teams) {  
       teams[teamIndex].points -= 1; // Subtract 1 point from the selected team
       localStorage.setItem('teams', JSON.stringify(teams)); // Save updated points
       displayPoints();
